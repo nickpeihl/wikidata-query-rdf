@@ -13,6 +13,7 @@ public final class MetaFields {
      */
     public static final String[] VALUES = new String[]{
         "type",
+        "has",
         "version",
         "changeset",
         "timestamp",
@@ -20,6 +21,6 @@ public final class MetaFields {
         "badkey",
         "isClosed",
         "loc",
-        "loc:error"
+        "loc:error",
     };
 }

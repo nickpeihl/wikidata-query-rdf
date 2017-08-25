@@ -38,7 +38,10 @@ public class OsmContextListener extends WikibaseContextListener {
         defaultDecls.put("osmrel", OSM.REL);
         defaultDecls.put("osmtag", OSM.TAG);
         defaultDecls.put("osmmeta", OSM.META);
-        defaultDecls.put("osmrole", OSM.ROLE);
+
+        // legacy
+        defaultDecls.put("osmt", OSM.TAG);
+        defaultDecls.put("osmm", OSM.META);
     }
 
     @Override

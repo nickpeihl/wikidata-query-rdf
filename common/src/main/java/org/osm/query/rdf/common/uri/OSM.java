@@ -35,11 +35,6 @@ public final class OSM {
      */
     public static final String TAG = "https://wiki.openstreetmap.org/wiki/Key:";
 
-    /**
-     * Uri prefix osm uses for relation's role fields. Examples: osmrole:inner
-     */
-    public static final String ROLE = "https://wiki.openstreetmap.org/Role:";
-
     private OSM() {
     }
 }

@@ -2,6 +2,7 @@ package org.osm.query.rdf.blazegraph;
 
 import org.openrdf.model.Value;
 import org.osm.query.rdf.common.uri.OSM;
+import org.wikidata.query.rdf.blazegraph.AbstractRandomizedBlazegraphTestBase;
 
 import java.util.Properties;
 
@@ -9,7 +10,7 @@ import java.util.Properties;
 /**
  * Base class for OSM-related tests.
  */
-public class AbstractRandomizedBlazegraphTestBase extends org.wikidata.query.rdf.blazegraph.AbstractRandomizedBlazegraphTestBase {
+public class OsmBlazegraphTestBase extends AbstractRandomizedBlazegraphTestBase {
 
     /**
      * Convert any object into an RDF value.
@@ -23,7 +24,10 @@ public class AbstractRandomizedBlazegraphTestBase extends org.wikidata.query.rdf
             s = s.replaceFirst("^osmrel:", OSM.REL);
             s = s.replaceFirst("^osmtag:", OSM.TAG);
             s = s.replaceFirst("^osmmeta:", OSM.META);
-            s = s.replaceFirst("^osmrole:", OSM.ROLE);
+
+            // legacy
+            s = s.replaceFirst("^osmt:", OSM.TAG);
+            s = s.replaceFirst("^osmm:", OSM.META);
             o = s;
         }
         return super.convert(o);

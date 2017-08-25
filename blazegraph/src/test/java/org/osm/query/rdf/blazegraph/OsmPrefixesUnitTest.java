@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.both;
 import static org.wikidata.query.rdf.test.Matchers.assertResult;
 import static org.wikidata.query.rdf.test.Matchers.binds;
 
-public class OsmPrefixesUnitTest extends org.osm.query.rdf.blazegraph.AbstractRandomizedBlazegraphTestBase {
+public class OsmPrefixesUnitTest extends OsmBlazegraphTestBase {
 
     @Test
     public void testOsmPrefixes() {
