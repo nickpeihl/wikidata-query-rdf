@@ -64,7 +64,7 @@
   </context-param>
   -->
   <listener>
-   <listener-class>org.osm.query.rdf.blazegraph.OsmContextListener</listener-class>
+   <listener-class>org.wikidata.query.rdf.blazegraph.WikibaseContextListener</listener-class>
   </listener>
   <servlet>
    <servlet-name>REST API</servlet-name>

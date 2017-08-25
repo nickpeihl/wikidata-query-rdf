@@ -1,9 +1,11 @@
 package org.osm.query.rdf.blazegraph;
 
+import com.bigdata.rdf.sail.sparql.PrefixDeclProcessor;
 import org.openrdf.model.Value;
 import org.osm.query.rdf.common.uri.OSM;
 import org.wikidata.query.rdf.blazegraph.AbstractRandomizedBlazegraphTestBase;
 
+import java.util.Map;
 import java.util.Properties;
 
 
@@ -11,6 +13,20 @@ import java.util.Properties;
  * Base class for OSM-related tests.
  */
 public class OsmBlazegraphTestBase extends AbstractRandomizedBlazegraphTestBase {
+
+    /*
+     * Initialize the Wikibase services including shutting off remote SERVICE
+     * calls and turning on label service calls.
+     */
+    static {
+        final Map<String, String> defaultDecls = PrefixDeclProcessor.defaultDecls;
+        defaultDecls.put("osmroot", OSM.ROOT);
+        defaultDecls.put("osmnode", OSM.NODE);
+        defaultDecls.put("osmway", OSM.WAY);
+        defaultDecls.put("osmrel", OSM.REL);
+        defaultDecls.put("osmtag", OSM.TAG);
+        defaultDecls.put("osmmeta", OSM.META);
+    }
 
     /**
      * Convert any object into an RDF value.
@@ -31,14 +47,6 @@ public class OsmBlazegraphTestBase extends AbstractRandomizedBlazegraphTestBase 
             o = s;
         }
         return super.convert(o);
-    }
-
-    /*
-     * Initialize the Osm services including shutting off remote SERVICE
-     * calls and turning on label service calls.
-     */
-    static {
-        OsmContextListener.initializeServices();
     }
 
     @Override
