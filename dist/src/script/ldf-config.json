@@ -13,13 +13,15 @@
   },
 
   "prefixes": {
-    "osmroot": "https://www.openstreetmap.org"
+    "osmroot": "https://www.openstreetmap.org",
     "osmnode": "https://www.openstreetmap.org/node/",
     "osmway": "https://www.openstreetmap.org/way/",
     "osmrel": "https://www.openstreetmap.org/relation/",
     "osmtag": "https://wiki.openstreetmap.org/wiki/Key:",
     "osmmeta": "https://www.openstreetmap.org/meta/",
-    "osmrole": "https://www.openstreetmap.org/wiki/Role:",
+
+    "osmt": "https://wiki.openstreetmap.org/wiki/Key:",
+    "osmm": "https://www.openstreetmap.org/meta/",
 
     "rdf":         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs":        "http://www.w3.org/2000/01/rdf-schema#",

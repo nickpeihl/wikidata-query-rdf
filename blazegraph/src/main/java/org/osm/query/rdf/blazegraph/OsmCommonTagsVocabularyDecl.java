@@ -1,9 +1,8 @@
 package org.osm.query.rdf.blazegraph;
 
 import com.bigdata.rdf.vocab.BaseVocabularyDecl;
-import org.osm.query.rdf.common.uri.MetaFields;
-import org.osm.query.rdf.common.uri.CommonRoles;
 import org.osm.query.rdf.common.uri.CommonTags;
+import org.osm.query.rdf.common.uri.MetaFields;
 import org.osm.query.rdf.common.uri.OSM;
 
 import java.util.LinkedList;
@@ -22,14 +21,11 @@ public class OsmCommonTagsVocabularyDecl extends BaseVocabularyDecl {
      */
     private static List<String> getUriList() {
         List<String> uriList = new LinkedList<String>();
-        for (String v: CommonTags.VALUES) {
-            uriList.add(OSM.TAG + v);
-        }
         for (String v: MetaFields.VALUES) {
             uriList.add(OSM.META + v);
         }
-        for (String v: CommonRoles.VALUES) {
-            uriList.add(OSM.ROLE + v);
+        for (String v: CommonTags.VALUES) {
+            uriList.add(OSM.TAG + v);
         }
         return uriList;
     }
