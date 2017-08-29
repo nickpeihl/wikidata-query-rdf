@@ -26,12 +26,12 @@ public final class OSM {
     public static final String REL = ROOT + "/relation/";
 
     /**
-     * Uri prefix osm uses for meta fields. Examples: osmmeta:user or osmmeta:version
+     * Uri prefix osm uses for meta fields. Examples: osmm:user or osmm:version
      */
     public static final String META = ROOT + "/meta/";
 
     /**
-     * Uri prefix osm uses for object tags. Examples: osmtag:name
+     * Uri prefix osm uses for object tags. Examples: osmt:name
      */
     public static final String TAG = "https://wiki.openstreetmap.org/wiki/Key:";
 

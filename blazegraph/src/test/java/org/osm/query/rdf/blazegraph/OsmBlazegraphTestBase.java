@@ -24,8 +24,8 @@ public class OsmBlazegraphTestBase extends AbstractRandomizedBlazegraphTestBase 
         defaultDecls.put("osmnode", OSM.NODE);
         defaultDecls.put("osmway", OSM.WAY);
         defaultDecls.put("osmrel", OSM.REL);
-        defaultDecls.put("osmtag", OSM.TAG);
-        defaultDecls.put("osmmeta", OSM.META);
+        defaultDecls.put("osmt", OSM.TAG);
+        defaultDecls.put("osmm", OSM.META);
     }
 
     /**
@@ -38,8 +38,8 @@ public class OsmBlazegraphTestBase extends AbstractRandomizedBlazegraphTestBase 
             s = s.replaceFirst("^osmnode:", OSM.NODE);
             s = s.replaceFirst("^osmway:", OSM.WAY);
             s = s.replaceFirst("^osmrel:", OSM.REL);
-            s = s.replaceFirst("^osmtag:", OSM.TAG);
-            s = s.replaceFirst("^osmmeta:", OSM.META);
+            s = s.replaceFirst("^osmt:", OSM.TAG);
+            s = s.replaceFirst("^osmm:", OSM.META);
 
             // legacy
             s = s.replaceFirst("^osmt:", OSM.TAG);
