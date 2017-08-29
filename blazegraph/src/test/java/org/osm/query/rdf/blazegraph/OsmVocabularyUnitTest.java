@@ -37,19 +37,19 @@ public class OsmVocabularyUnitTest extends OsmBlazegraphTestBase {
 
     @Test
     public void commonTagIsByte() {
-        BigdataStatement statement = roundTrip(OSM.NODE, "osmtag:" + CommonTags.VALUES[0], OSM.NODE);
+        BigdataStatement statement = roundTrip(OSM.NODE, "osmt:" + CommonTags.VALUES[0], OSM.NODE);
         assertThat(statement.getPredicate().getIV(), instanceOf(VocabURIByteIV.class));
     }
 
     @Test
     public void uncommonTagIsNotByte() {
-        BigdataStatement statement = roundTrip(OSM.NODE, "osmtag:abcdef0987", OSM.NODE);
+        BigdataStatement statement = roundTrip(OSM.NODE, "osmt:abcdef0987", OSM.NODE);
         assertThat(statement.getPredicate().getIV(), instanceOf(TermId.class));
     }
 
     @Test
     public void MetaFieldIsByte() {
-        BigdataStatement statement = roundTrip(OSM.NODE, "osmmeta:" + MetaFields.VALUES[0], OSM.NODE);
+        BigdataStatement statement = roundTrip(OSM.NODE, "osmm:" + MetaFields.VALUES[0], OSM.NODE);
         assertThat(statement.getPredicate().getIV(), instanceOf(VocabURIByteIV.class));
     }
 }
