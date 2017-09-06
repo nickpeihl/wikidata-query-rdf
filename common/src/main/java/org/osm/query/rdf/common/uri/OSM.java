@@ -35,6 +35,12 @@ public final class OSM {
      */
     public static final String TAG = "https://wiki.openstreetmap.org/wiki/Key:";
 
+    /**
+     * Predicate Uri to store how often a page has been viewed.
+     * (the value is usually relative to the pageviews of other pages, not in of itself)
+     */
+    public static final String PAGEVIEWS = "https://dumps.wikimedia.org/other/pageviews/";
+
     private OSM() {
     }
 }

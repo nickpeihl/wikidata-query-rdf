@@ -19,6 +19,7 @@
     "osmrel":  "https://www.openstreetmap.org/relation/",
     "osmt":    "https://wiki.openstreetmap.org/wiki/Key:",
     "osmm":    "https://www.openstreetmap.org/meta/",
+    "pageviews":   "https://dumps.wikimedia.org/other/pageviews/",
 
     "rdf":         "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs":        "http://www.w3.org/2000/01/rdf-schema#",

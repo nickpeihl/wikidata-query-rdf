@@ -26,6 +26,7 @@ public class OsmBlazegraphTestBase extends AbstractRandomizedBlazegraphTestBase 
         defaultDecls.put("osmrel", OSM.REL);
         defaultDecls.put("osmt", OSM.TAG);
         defaultDecls.put("osmm", OSM.META);
+        defaultDecls.put("pageviews", OSM.PAGEVIEWS);
     }
 
     /**
@@ -40,10 +41,8 @@ public class OsmBlazegraphTestBase extends AbstractRandomizedBlazegraphTestBase 
             s = s.replaceFirst("^osmrel:", OSM.REL);
             s = s.replaceFirst("^osmt:", OSM.TAG);
             s = s.replaceFirst("^osmm:", OSM.META);
+            s = s.replaceFirst("^pageviews:", OSM.PAGEVIEWS);
 
-            // legacy
-            s = s.replaceFirst("^osmt:", OSM.TAG);
-            s = s.replaceFirst("^osmm:", OSM.META);
             o = s;
         }
         return super.convert(o);
