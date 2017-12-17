@@ -1,12 +1,13 @@
 package org.osm.query.rdf.blazegraph;
 
-import com.bigdata.rdf.internal.impl.TermId;
-import com.bigdata.rdf.internal.impl.uri.VocabURIByteIV;
-import com.bigdata.rdf.model.BigdataStatement;
 import org.junit.Test;
 import org.osm.query.rdf.common.uri.CommonTags;
 import org.osm.query.rdf.common.uri.MetaFields;
 import org.osm.query.rdf.common.uri.OSM;
+
+import com.bigdata.rdf.internal.impl.TermId;
+import com.bigdata.rdf.internal.impl.uri.VocabURIByteIV;
+import com.bigdata.rdf.model.BigdataStatement;
 
 import static org.hamcrest.Matchers.instanceOf;
 

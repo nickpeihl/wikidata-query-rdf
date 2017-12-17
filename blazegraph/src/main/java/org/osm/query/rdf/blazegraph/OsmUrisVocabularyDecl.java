@@ -1,7 +1,8 @@
 package org.osm.query.rdf.blazegraph;
 
-import com.bigdata.rdf.vocab.BaseVocabularyDecl;
 import org.osm.query.rdf.common.uri.OSM;
+
+import com.bigdata.rdf.vocab.BaseVocabularyDecl;
 
 /**
  * Vocabulary containing the URIs from

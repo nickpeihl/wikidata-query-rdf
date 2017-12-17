@@ -1,12 +1,13 @@
 package org.osm.query.rdf.blazegraph;
 
-import com.bigdata.rdf.vocab.BaseVocabularyDecl;
+import java.util.LinkedList;
+import java.util.List;
+
 import org.osm.query.rdf.common.uri.CommonTags;
 import org.osm.query.rdf.common.uri.MetaFields;
 import org.osm.query.rdf.common.uri.OSM;
 
-import java.util.LinkedList;
-import java.util.List;
+import com.bigdata.rdf.vocab.BaseVocabularyDecl;
 
 /**
  * Vocabulary containing the URIs from

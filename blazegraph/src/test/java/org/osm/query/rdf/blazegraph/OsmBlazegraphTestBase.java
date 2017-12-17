@@ -1,13 +1,13 @@
 package org.osm.query.rdf.blazegraph;
 
-import com.bigdata.rdf.sail.sparql.PrefixDeclProcessor;
+import java.util.Map;
+import java.util.Properties;
+
 import org.openrdf.model.Value;
 import org.osm.query.rdf.common.uri.OSM;
 import org.wikidata.query.rdf.blazegraph.AbstractRandomizedBlazegraphTestBase;
 
-import java.util.Map;
-import java.util.Properties;
-
+import com.bigdata.rdf.sail.sparql.PrefixDeclProcessor;
 
 /**
  * Base class for OSM-related tests.
