@@ -11,7 +11,7 @@ public class OsmVocabulary {
     /**
      * Current vocabulary class.
      */
-    public static final Class VOCABULARY_CLASS = V001.class;
+    public static final Class VOCABULARY_CLASS = V002.class;
 
     protected OsmVocabulary() {
         // prevents calls from subclass
@@ -31,6 +31,26 @@ public class OsmVocabulary {
         }
 
         public V001(String namespace) {
+            super(namespace);
+        }
+
+        @Override
+        protected void addValues() {
+            addDecl(new OsmUrisVocabularyDecl());
+            addDecl(new OsmCommonTagsVocabularyDecl());
+            super.addValues();
+        }
+    }
+
+    /**
+     * Vocabulary class for BG 2x.
+     * Inherits Wikidata vocabulary.
+     */
+    public static class V002 extends WikibaseVocabulary.V003 {
+        public V002() {
+        }
+
+        public V002(String namespace) {
             super(namespace);
         }
 
