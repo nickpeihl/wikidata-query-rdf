@@ -12,6 +12,7 @@ import javax.servlet.ServletContextEvent;
 
 import org.openrdf.model.impl.URIImpl;
 import org.openrdf.query.resultio.TupleQueryResultFormat;
+import org.osm.query.rdf.blazegraph.tabular.TabularServiceFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wikidata.query.rdf.blazegraph.categories.CategoriesStoredQuery;
@@ -47,9 +48,6 @@ import com.bigdata.rdf.sparql.ast.ValueExpressionNode;
 import com.bigdata.rdf.sparql.ast.FunctionRegistry.Factory;
 import com.bigdata.rdf.sparql.ast.eval.AST2BOpUtility;
 import com.bigdata.rdf.sparql.ast.eval.AbstractServiceFactoryBase;
-import com.bigdata.rdf.sparql.ast.eval.SampleServiceFactory;
-import com.bigdata.rdf.sparql.ast.eval.SliceServiceFactory;
-import com.bigdata.rdf.sparql.ast.eval.ValuesServiceFactory;
 import com.bigdata.rdf.sparql.ast.service.IServiceOptions;
 import com.bigdata.rdf.sparql.ast.service.RemoteServiceFactoryImpl;
 import com.bigdata.rdf.sparql.ast.service.RemoteServiceOptions;
@@ -58,7 +56,6 @@ import com.bigdata.rdf.sparql.ast.service.ServiceCall;
 import com.bigdata.rdf.sparql.ast.service.ServiceCallCreateParams;
 import com.bigdata.rdf.sparql.ast.service.ServiceFactory;
 import com.bigdata.rdf.sparql.ast.service.ServiceRegistry;
-import com.bigdata.rdf.store.BDS;
 
 import static com.bigdata.rdf.sparql.ast.FunctionRegistry.checkArgs;
 
@@ -91,18 +88,19 @@ public class WikibaseContextListener extends BigdataRDFServletContextListener {
         LabelService.register();
         GeoService.register();
         MWApiServiceFactory.register();
+        TabularServiceFactory.register();
         CategoriesStoredQuery.register();
 
-        // Whitelist services we like by default
-        reg.addWhitelistURL(GASService.Options.SERVICE_KEY.toString());
-        reg.addWhitelistURL(ValuesServiceFactory.SERVICE_KEY.toString());
-        reg.addWhitelistURL(BDS.SEARCH_IN_SEARCH.toString());
-        reg.addWhitelistURL(SliceServiceFactory.SERVICE_KEY.toString());
-        reg.addWhitelistURL(SampleServiceFactory.SERVICE_KEY.toString());
-        loadWhitelist(reg);
-
-        // Initialize remote services
-        reg.setDefaultServiceFactory(getDefaultServiceFactory());
+//        // Whitelist services we like by default
+//        reg.addWhitelistURL(GASService.Options.SERVICE_KEY.toString());
+//        reg.addWhitelistURL(ValuesServiceFactory.SERVICE_KEY.toString());
+//        reg.addWhitelistURL(BDS.SEARCH_IN_SEARCH.toString());
+//        reg.addWhitelistURL(SliceServiceFactory.SERVICE_KEY.toString());
+//        reg.addWhitelistURL(SampleServiceFactory.SERVICE_KEY.toString());
+//        loadWhitelist(reg);
+//
+//        // Initialize remote services
+//        reg.setDefaultServiceFactory(getDefaultServiceFactory());
 
         // Override date functions so that we can handle them
         // via WikibaseDate
@@ -207,6 +205,7 @@ public class WikibaseContextListener extends BigdataRDFServletContextListener {
         defaultDecls.put("geof", GeoSparql.FUNCTION_NAMESPACE);
         defaultDecls.put("mediawiki", Mediawiki.NAMESPACE);
         defaultDecls.put("mwapi", Mediawiki.API);
+        defaultDecls.put("tabular", TabularServiceFactory.COLUMN_NAMESPACE);
         defaultDecls.put("gas", GASService.Options.NAMESPACE);
     }
 
