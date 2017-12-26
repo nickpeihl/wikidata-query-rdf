@@ -16,6 +16,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.Set;
 
 import org.apache.commons.csv.CSVFormat;
@@ -41,6 +43,9 @@ import com.bigdata.rdf.store.BD;
  */
 public class TabularParamParser {
 
+    // Overpass QL: Parse the "[timeout:25]" into a number (if exists)
+    private static final Pattern timeoutPattern = Pattern.compile("\\[timeout:(\\d+)]", Pattern.CASE_INSENSITIVE);
+
     private final Set<IVariable<?>> requiredBound = new HashSet<>(4);
     private final List<OutputVariable> outputVariables;
     private final IVariableOrConstant url;
@@ -54,6 +59,8 @@ public class TabularParamParser {
     private final IVariableOrConstant ignoreSurroundingSpaces;
     private final IVariableOrConstant quote;
     private final IVariableOrConstant useColumnNames;
+
+    private long requestTimeout = 30;
 
     /**
      * Parse list of bindings from input and output params to specific variables or constants.
@@ -75,6 +82,7 @@ public class TabularParamParser {
         escape = parseInputParam("escape", serviceParams);
         quote = parseInputParam("quote", serviceParams);
         useColumnNames = parseInputParam("useColumnNames", serviceParams);
+
         outputVariables = getOutputVars(serviceNode);
     }
 
@@ -184,6 +192,8 @@ public class TabularParamParser {
         }
         try {
             if (useOT) {
+                updateRequestTimeout(str);
+
                 // FIXME: should be configurable parameter
                 str = "http://overpass-api.de/api/interpreter?data=" + URLEncoder.encode(str, UTF_8.name());
             }
@@ -306,6 +316,21 @@ public class TabularParamParser {
         return requiredBound;
     }
 
+    private void updateRequestTimeout(String otQuery) {
+        // Process Overpass [timeout:nn] pattern
+        Matcher matcher = timeoutPattern.matcher(otQuery);
+        if (matcher.find()) {
+            int timeout = Integer.parseInt(matcher.group(1));
+            if (timeout > 0 && timeout < 180) {
+                this.requestTimeout = timeout + 10;
+            }
+        }
+    }
+
+    public long getRequestTimeout() {
+        return requestTimeout;
+    }
+
     /**
      * Variable in the output of the API.
      */
@@ -348,6 +373,7 @@ public class TabularParamParser {
 //                    };
 //                    break;
                 case "uri":
+                case "url":
                     this.parser = (str, vf) -> makeConstant(vf, new URIImpl(str));
                     break;
                 default:

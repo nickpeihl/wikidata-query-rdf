@@ -46,11 +46,6 @@ public class TabularServiceCall implements MockIVReturningServiceCall, BigdataSe
     private static final Logger log = LoggerFactory.getLogger(TabularServiceCall.class);
 
     /**
-     * Query timeout, in seconds.
-     * FIXME: make timeout configurable
-     */
-    private static final int TIMEOUT = 5;
-    /**
      * List of input variable bindings.
      */
     private final TabularParamParser paramParser;
@@ -62,11 +57,6 @@ public class TabularServiceCall implements MockIVReturningServiceCall, BigdataSe
      * The LexiconRelation for the TripleStore we're working with.
      */
     private final LexiconRelation lexiconRelation;
-
-    /**
-     * Call endpoint URL.
-     */
-//    private final String endpoint;
 
     TabularServiceCall(TabularParamParser paramParser,
                        HttpClient client,
@@ -249,7 +239,7 @@ public class TabularServiceCall implements MockIVReturningServiceCall, BigdataSe
             InputStreamResponseListener listener = new InputStreamResponseListener();
             try {
                 req.send(listener);
-                response = listener.get(TIMEOUT, TimeUnit.SECONDS);
+                response = listener.get(paramParser.getRequestTimeout(), TimeUnit.SECONDS);
             } catch (ExecutionException | TimeoutException | InterruptedException e) {
                 throw new RuntimeException("TABULAR request failed", e);
             }
